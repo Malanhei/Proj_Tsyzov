@@ -3,7 +3,7 @@
 Даны числа x, у. Проверить истинность высказывания: «Точка с координатами (x, у)
 лежит в четвертой координатной четверти»
 '''
-def proverka_float(x):
+def proverka_float(x):   # Проверка числа
     while type(x) != float:
         try:
             x = float(x)
@@ -14,6 +14,7 @@ def proverka_float(x):
 
 x = input('Введите кооардинату x: ')
 x = proverka_float(x)
+
 y = input('Введите кооардинату y: ')
 y = proverka_float(y)
 

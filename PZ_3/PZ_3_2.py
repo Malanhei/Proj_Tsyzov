@@ -4,7 +4,7 @@
 треугольник со сторонами a, b, c».
 
 '''
-def proverka_int(x):
+def proverka_int(x):    #Проверка числа
     while type(x) != int:
         try:
             x = int(x)
@@ -15,8 +15,10 @@ def proverka_int(x):
 
 a = input('Введите целое число обозначающее сторону a: ')
 a = proverka_int(a)
+
 b = input('Введите целое число обозначающее сторону b: ')
 b = proverka_int(b)
+
 c = input('Введите целое число обозначающее сторону c: ')
 c = proverka_int(c)
 
