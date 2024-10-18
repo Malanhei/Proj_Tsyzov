@@ -5,38 +5,28 @@
 чисел.
 
 '''
+def proverka_int(x):    #Проверка числа
+    while type(x) != int:
+        try:
+            x = int(x)
+            return x
+        except ValueError:
+            print('Вы ввели число не правильно')
+            x = input('Повторите попытку: ')
+
 a = input('Введите a ')
-while type(a) != int:   #Проверка числа
-    try:
-        a = int(a)
-    except:
-        print('Неправильно ввели')
-        a = input('Введите a ')
+a = proverka_int(a)
 
 b = input('Введите b ')
-while type(b) != int:    #Проверка числа
-    try:
-        b = int(b)
-    except:
-        print('Неправильно ввели')
-        b = input('Введите b ')
+b = proverka_int(b)
 
 while a > b:           #Проверка: a < b
     print('a длжно быть меньше b')
     a = input('Введите a ')
-    while type(a) != int:   #Проверка числа
-        try:
-            a = int(a)
-        except:
-            print('Неправильно ввели')
-            a = input('Введите a ')
+    a = proverka_int(a)
+    
     b = input('Введите b ')
-    while type(b) != int:    #Проверка числа
-        try:
-            b = int(b)
-        except:
-            print('Неправильно ввели')
-            b = input('Введите b ')
+    b = proverka_int(b)
 
 
 

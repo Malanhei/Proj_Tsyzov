@@ -3,14 +3,17 @@
 Дано целое число N (> 1). Вывести наибольшее из целых чисел K, для которых сумма
 1 + 2 + ... + K будет меньше или равна N, и саму эту сумму.
 '''
+def proverka_int(x):    #Проверка числа
+    while type(x) != int:
+        try:
+            x = int(x)
+            return x
+        except ValueError:
+            print('Вы ввели число не правильно')
+            x = input('Повторите попытку: ')
 
 n = input('Введите n ')
-while type(n) != int:   #Проверка числа
-    try:
-        n = int(n)
-    except:
-        print('Неправильно ввели')
-        n = input('Введите n ')
+n = proverka_int(n)
 
 k = 1
 total_sum = 0
