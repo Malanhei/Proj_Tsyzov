@@ -21,6 +21,25 @@ while type(b) != int:    #Проверка числа
         print('Неправильно ввели')
         b = input('Введите b ')
 
+while a > b:           #Проверка: a < b
+    print('a длжно быть меньше b')
+    a = input('Введите a ')
+    while type(a) != int:   #Проверка числа
+        try:
+            a = int(a)
+        except:
+            print('Неправильно ввели')
+            a = input('Введите a ')
+    b = input('Введите b ')
+    while type(b) != int:    #Проверка числа
+        try:
+            b = int(b)
+        except:
+            print('Неправильно ввели')
+            b = input('Введите b ')
+
+
+
 k = 0
 
 for i in range(b, a - 1, -1):

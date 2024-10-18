@@ -19,10 +19,11 @@ while True:
     if total_sum == n:
         k += 1
         break
+    elif total_sum < n:
+        k += 1
     elif total_sum > n:
         total_sum -= k
         break
-    k += 1
 print('Наибольшее кол-во k =', k-1, 'а сумма =', total_sum)
 
 
