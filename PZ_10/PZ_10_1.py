@@ -9,7 +9,7 @@
 2. Какие книги есть во всех магазинах.
 3. Хотя бы одну книгу, которая есть не во всех магазинах.
 '''
-
+'''
 books = {
     "Мансистр": ["Лермонтов", "Достоевский", "Пушкин", "Тютчев"],
     "Домбинич": ["Толстой", "Грибоедов", "Чехов", "Пушкин"],
@@ -37,11 +37,18 @@ def book(books):
         all_books_set.remove(i)
 
     return all_books_set
+'''
 
+manistr = ("Лермонтов", "Достоевский", "Пушкин", "Тютчев")
+dombinich = ("Толстой", "Грибоедов", "Чехов", "Пушкин")
+bumbarket = ("Пушкин", "Достоевский", "Маяковский")
+galereya = ("Чехов", "Тютчев", "Пушкин")
 
 
 
 # Вывод результатов
-print(f"1. Список всех книг: {all_books(books)}")
-print(f"2. Книги, которые есть во всех магазинах: {books_all_store(books)}")
-print(f"3. Книги, которые есть не во всех магазинах: {list(book(books))}")
+print(f"1. Список всех книг: {set(manistr + dombinich + bumbarket + galereya)}")
+
+print(f"2. Книги, которые есть во всех магазинах: {set(manistr) & set(dombinich) & set(bumbarket) & set(galereya)}")
+
+print(f"3. Книги, которые есть не во всех магазинах: {(set(manistr + dombinich + bumbarket + galereya)) - (set(manistr) & set(dombinich) & set(bumbarket) & set(galereya))}")
