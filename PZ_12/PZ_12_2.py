@@ -16,5 +16,3 @@ print(f"Исходная строка: {input_string}")
 print("Буквы из строки:")
 for i in letters_generator(input_string):
     print(i, end=" ")  
-
-print(letters_generator(input_string))
