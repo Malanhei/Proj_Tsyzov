@@ -17,6 +17,26 @@ cursor.execute('''
 ''')
 
 
+def add_from_txt(filepath):
+    try:
+        with open(filepath, "r", encoding="utf-8") as file:
+            for line in file:
+                parts = line.strip().split(",")
+                if len(parts) != 5:
+                    print(f"Пропущена строка с неверным форматом: {line.strip()}")
+                    continue
+                client_name, master_name, item_type, material, cost_str = parts
+                try:
+                    cost = float(cost_str)
+                    add_izdelie(client_name, master_name, item_type, material, cost)
+                except ValueError:
+                    print(f"Ошибка преобразования стоимости: {cost_str}")
+        print("Импорт завершен.")
+    except FileNotFoundError:
+        print("Файл не найден.")
+
+
+
 def add_izdelie(client_name, master_name, item_type, material, cost):
     cursor.execute('''
         INSERT INTO izdelie (client_name, master_name, item_type, material, cost)
@@ -51,7 +71,9 @@ while True:
     print("2. Показать все изделия")
     print("3. Изменить изделие")
     print("4. Удалить изделие")
-    print("5. Выход")
+    print("5. Импорт из файла")
+    print("6. Выход")
+
     choice = input("Выберите действие: ")
 
     if choice == "1":
@@ -83,6 +105,9 @@ while True:
         print("Изделие удалено!\n")
 
     elif choice == "5":
+        add_from_txt('db.txt')
+
+    elif choice == "6":
         break
 
     else:
