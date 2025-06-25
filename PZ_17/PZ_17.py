@@ -30,82 +30,126 @@ def clear_form():
 
 root = tk.Tk()
 root.title("Форма заявки")
+root.geometry("400x390")
 
-
-root.geometry("400x430")
-
-# Центрирование по 3 колонкам
-for i in range(3):
-    root.grid_columnconfigure(i, weight=1)
-
-# Заголовок формы (верхняя часть, row=0)
-tk.Label(root, text="Форма заявки", 
-         bg="green", fg="black", font=("Arial", 12, "bold"), highlightbackground="skyblue", highlightthickness=2
-).grid(row=0, column=0, columnspan=3, sticky="nsew", pady=10)
+# Заголовок формы
+tk.Label(root, text="Форма заявки",
+         bg="green", fg="white",
+         font=("Arial", 12, "bold"),
+         highlightbackground="skyblue", highlightthickness=1
+).pack(side="top", fill=tk.BOTH)
 
 # Шрифты
 bold_font = tkFont.Font(family="Arial", size=9, weight="bold")
 normal_font = tkFont.Font(family="Arial", size=9)
 
-# Первая строка (перенесли на row=1)
-frame1 = tk.Frame(root)
-frame1.grid(row=1, column=0, columnspan=3, sticky="w")
+# Обёртка для всех секций
+frames1 = tk.Frame(root, highlightbackground="skyblue", highlightthickness=1)
+frames1.pack(side="top", fill=tk.BOTH)
+
+#1
+frame1 = tk.Frame(frames1)
+frame1.pack(anchor="w")
 tk.Label(frame1, text="Допустимые типы вложений:", font=bold_font).pack(side="left")
 tk.Label(frame1, text=" zip, rar, txt, doc, jpg, png, gif, odt, xml", font=normal_font).pack(side="left")
 
-# Вторая строка
-frame2 = tk.Frame(root)
-frame2.grid(row=2, column=0, columnspan=3, sticky="w")
+frame2 = tk.Frame(frames1)
+frame2.pack(anchor="w", pady=2)
 tk.Label(frame2, text="Макс. размер каждого файла:", font=bold_font).pack(side="left")
 tk.Label(frame2, text=" 1024kb.", font=normal_font).pack(side="left")
 
-# Третья строка
-frame3 = tk.Frame(root)
-frame3.grid(row=3, column=0, columnspan=3, sticky="w")
+frame3 = tk.Frame(frames1)
+frame3.pack(anchor="w", pady=2)
 tk.Label(frame3, text="Макс. общий размер файла:", font=bold_font).pack(side="left")
 tk.Label(frame3, text=" 2048kb.", font=normal_font).pack(side="left")
 
-# Полоска-разделитель
-tk.Frame(root, height=1, bg="gray", bd=0).grid(row=4, column=0, columnspan=3, sticky="we", pady=5)
+#2
+frames2 = tk.Frame(root)
+frames2.pack(side="top", fill=tk.BOTH)
 
-tk.Label(root, text="Ваше имя:*").grid(row=5, column=0, sticky="e")
-name_entry = tk.Entry(root, width=40)
-name_entry.grid(row=5, column=1)
+frame21 = tk.Frame(frames2, highlightbackground="skyblue", highlightthickness=1, width=150, height=25)
+frame21.pack_propagate(False)
+frame21.pack(side="left")
+tk.Label(frame21, text="Ваше имя:", font=normal_font).pack(side="left")
 
-tk.Label(root, text="Ваш Email:*").grid(row=6, column=0, sticky="e")
-email_entry = tk.Entry(root, width=40)
-email_entry.grid(row=6, column=1)
+frame22 = tk.Frame(frames2, highlightbackground="skyblue", highlightthickness=1, width=250, height=25)
+frame22.pack_propagate(False)
+frame22.pack(side="left")
+name_entry = tk.Entry(frame22, width=30)
+name_entry.pack(side="left", padx=2, pady=2)
+tk.Label(frame22, text="*", font=normal_font, fg='red').pack(side="left")
 
-# Полоска-разделитель
-tk.Frame(root, height=1, bg="gray", bd=0).grid(row=7, column=0, columnspan=3, sticky="we", pady=5)
+#3 
+frames3 = tk.Frame(root)
+frames3.pack(side="top", fill=tk.BOTH)
 
-tk.Label(root, text="Тема письма:").grid(row=8, column=0, sticky="e")
-subject_entry = tk.Entry(root, width=40)
-subject_entry.grid(row=8, column=1)
+frame31 = tk.Frame(frames3, highlightbackground="skyblue", highlightthickness=1, width=150, height=25)
+frame31.pack_propagate(False)
+frame31.pack(side="left")
+tk.Label(frame31, text="Ваш Email:", font=normal_font).pack(side="left")
 
-# Полоска-разделитель
-tk.Frame(root, height=1, bg="gray", bd=0).grid(row=9, column=0, columnspan=3, sticky="we", pady=5)
+frame32 = tk.Frame(frames3, highlightbackground="skyblue", highlightthickness=1, width=250, height=25)
+frame32.pack_propagate(False)
+frame32.pack(side="left")
+email_entry = tk.Entry(frame32, width=30)
+email_entry.pack(side="left", padx=2, pady=2)
+tk.Label(frame32, text="*", font=normal_font, fg='red').pack(side="left")
 
-# Прикрепленные файлы
+#4
+frames4 = tk.Frame(root)
+frames4.pack(side="top", fill=tk.BOTH)
+
+frame41 = tk.Frame(frames4, highlightbackground="skyblue", highlightthickness=1, width=150, height=25)
+frame41.pack_propagate(False)
+frame41.pack(side="left")
+tk.Label(frame41, text="Тема письма:", font=normal_font).pack(side="left")
+
+frame42 = tk.Frame(frames4, highlightbackground="skyblue", highlightthickness=1, width=250, height=25)
+frame42.pack_propagate(False)
+frame42.pack(side="left")
+subject_entry = tk.Entry(frame42, width=30)
+subject_entry.pack(side="left", padx=2, pady=2)
+
+#5-7
 file_entries = []
 for i in range(3):
-    tk.Label(root, text="Прикрепить файл:").grid(row=10+i, column=0, sticky="e")
-    file_entry = tk.Entry(root, width=30)
-    file_entry.grid(row=10+i, column=1)
+    i = tk.Frame(root)
+    i.pack(side="top", fill=tk.BOTH)
+    framei1 = tk.Frame(i, highlightbackground="skyblue", highlightthickness=1, width=150, height=25)
+    framei1.pack_propagate(False)
+    framei1.pack(side="left")
+    tk.Label(framei1, text="Прикрепить файл:", font=normal_font).pack(side="left")
+
+    framei2 = tk.Frame(i, highlightbackground="skyblue", highlightthickness=1, width=250, height=25)
+    framei2.pack_propagate(False)
+    framei2.pack(side="left")
+    file_entry = tk.Entry(framei2, width=30)
+    file_entry.pack(side="left", padx=2, pady=2)
     file_entries.append(file_entry)
-    tk.Button(root, text="Обзор...", command=lambda e=file_entry: browse_file(e)).grid(row=10+i, column=2)
 
-# Полоска-разделитель
-tk.Frame(root, height=1, bg="gray", bd=0).grid(row=13, column=0, columnspan=3, sticky="we", pady=5)
+    tk.Button(framei2, text="Обзор...", command=lambda e=file_entry: browse_file(e)).pack(side="left", padx=2, pady=2)
 
-tk.Label(root, text="Ваше сообщение:*").grid(row=14, column=0, sticky="ne")
-message_text = tk.Text(root, width=40, height=5)
-message_text.grid(row=14, column=1, columnspan=2)
+#8
+frames8 = tk.Frame(root, highlightbackground="skyblue", highlightthickness=1)
+frames8.pack(side="top", fill=tk.BOTH)
 
-# Полоска-разделитель
-tk.Frame(root, height=1, bg="gray", bd=0).grid(row=15, column=0, columnspan=3, sticky="we", pady=5)
+frame81 = tk.Frame(frames8)
+frame81.pack(anchor='nw')
+tk.Label(frame81, text="Ваше сообщение:", font=normal_font).pack(side="left")
+tk.Label(frame81, text="*", font=normal_font, fg='red').pack(side="left")
 
-tk.Button(root, text="Отправить Email", command=submit_form).grid(row=16, column=1, sticky="e")
-tk.Button(root, text="Очистить", command=clear_form).grid(row=16, column=2, sticky="w")
+frame82 = tk.Frame(frames8, highlightbackground="skyblue", highlightthickness=1, width=350, height=100)
+message_text = tk.Text(frame82, width=40, height=5)
+message_text.pack(side="bottom")
+frame82.pack(side="bottom")
+
+#9
+frames9 = tk.Frame(root, background='green')
+frames9.pack(side="top", fill=tk.BOTH)
+
+frame91 = tk.Frame(frames9, background='green')
+frame91.pack(anchor="center")
+tk.Button(frame91, text="Отправить Email", command=submit_form).pack(side='left', padx=5, pady=3)
+tk.Button(frame91, text="Очистить", command=clear_form).pack(side="left", padx=5, pady=3)
 
 root.mainloop()
