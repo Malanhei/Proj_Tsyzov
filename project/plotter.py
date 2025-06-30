@@ -36,7 +36,7 @@ def plot_income_vs_expense_by_category():
     plt.ylabel("Сумма")
     plt.title("Доходы и расходы по категориям")
 
-    # ✅ Добавим отображение баланса
+    #отображение баланса
     plt.text(0.95, 0.95, f"Баланс: {balance:.2f} ₽",
              transform=plt.gca().transAxes,
              fontsize=12, color="blue",

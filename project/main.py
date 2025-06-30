@@ -49,7 +49,7 @@ ttk.Label(frame, text="Категория:").grid(row=1, column=0, sticky="w", p
 category_entry = ttk.Entry(frame, font=("Segoe UI", 10))
 category_entry.grid(row=1, column=1, padx=5, pady=5)
 
-ttk.Label(frame, text="Дата (ISO или пусто):").grid(row=2, column=0, sticky="w", padx=5)
+ttk.Label(frame, text="Дата(необязательно)):").grid(row=2, column=0, sticky="w", padx=5)
 date_entry = ttk.Entry(frame, font=("Segoe UI", 10))
 date_entry.grid(row=2, column=1, padx=5, pady=5)
 
